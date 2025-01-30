@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Blogs</title>
+    <link href="/css/tailwind.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 dark:bg-gray-800 min-h-screen transition-colors duration-200">
+    <nav class="bg-white dark:bg-gray-900 shadow-lg p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-blue-600 dark:text-blue-400">All Posts</h1>
+            <div class="flex items-center space-x-4">
+                <button id="theme-toggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700">
+                    <span id="theme-icon">🌑</span>
+                </button>
+                
+                <a href="/" class="btn-secondary">Back Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto p-4">
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <% blogposts.forEach(blog => { %>
+                <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md">
+                    <h3 class="text-lg font-medium mb-2 dark:text-gray-100"><%= blog.title %></h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-2"><%= blog.date %></p>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4"><%= blog.content %></p>
+                    <div class="flex space-x-2">
+                        <a href="/blog/<%= blog.id %>" class="text-blue-500 hover:text-blue-700 dark:text-blue-400">Read Full Post →</a>
+                        <a href="/edit/<%= blog.id %>" class="text-green-500 hover:text-green-700 dark:text-green-400">Edit</a>
+                        <a href="/delete/<%= blog.id %>" class="text-red-500 hover:text-red-700 dark:text-red-400">Delete</a>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+
+    <script src="/js/theme.js"></script>
+</body>
+</html>
